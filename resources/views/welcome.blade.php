@@ -23,6 +23,7 @@
         <script src="{{ asset('global_assets/assets/js/app.js') }}"></script>
         <script src="{{ asset('global_assets/js/demo_pages/form_checkboxes_radios.js') }}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('global_assets/js/sweetalert2.js') }}"></script>
     </head>
     <body class="antialiased">
         @include('partials/header')

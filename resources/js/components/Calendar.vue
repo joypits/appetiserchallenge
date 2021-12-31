@@ -1,4 +1,5 @@
 <template>
+    
      <div class="row">
                 <div class="col-12">
                         <div class="card">
@@ -9,7 +10,7 @@
 							<div class="card-body">
                             <form name="myform" @submit.prevent="AddNewEvent" id="myForm">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <div class="form-group">
                                                 <label>Event</label>
                                                 <div class="form-group form-group-feedback form-group-feedback-right">
@@ -53,16 +54,19 @@
                                             </div>
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
-                                        <div class="col-9">
-                                             <table class="table primary table-bordered">
+                                        <div class="col-8">
+                                        
+                                             <table class="table">
                                                 <thead>
-                                                    <th colspan="2"></th>
+                                                    <tr v-for="(category, value) in titleH">
+                                                        <th colspan="2"><h3>{{ category.date | formatDate }}</h3></th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="(category,index) in categories_list">
-                                                    <td>{{ category.days_num }} {{ category.days_str }}</td>
-                                                    <td>{{category.event}}</td>
-                                                </tr>
+                                                    <tr v-bind:class="{success:category.event != null,default:category.event == null}"  v-for="(category,index) in categories_list">
+                                                        <td width="150px">{{ category.days }} {{ category.day }}</td>
+                                                        <td align="left">{{ category.event }}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -73,8 +77,16 @@
                 </div>
             </div>  
 
-            
+
 </template>
+<style>
+.default{
+        background-color: #fff;
+    }
+    .success{
+        background-color: #EAF5EA;
+    }
+</style>
 <script>
      export default {
         name:"ViewEvent",
@@ -83,6 +95,7 @@
         data () {
             return {
                 categories_list : [],
+                titleH : '',
             }
         },
  
@@ -92,9 +105,8 @@
                 let instance = this;
                 axios.get('api/events')
                     .then(function (response) {
-                        console.log(response);
-                        instance.categories_list = response.data;
- 
+                        instance.categories_list = response.data.event;
+                        instance.titleH = response.data.heada;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -103,10 +115,28 @@
             AddNewEvent() {
                 var formData = new FormData(document.getElementById("myForm"));
                 let instance = this;
+                let self = this;
                 axios.post('api/events/add', formData)
                     .then(function (response) {
-                        console.log(formData);
-                       
+
+                         Swal.fire({
+                                    icon: 'success',
+                                    title: 'Event successfully saved',
+                                    position: 'top-end',
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+
+                        axios.get('api/events')
+                            .then(function (response) {
+                                instance.categories_list = response.data.event;
+                                instance.titleH = response.data.heada;
+                        
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -116,5 +146,7 @@
         mounted() {
             this.viewEvents();
         }
+                        
     }
+
 </script>

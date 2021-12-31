@@ -14,31 +14,36 @@ use DateInterval;
 class CalendarController extends Controller
 {
     public function showEvent(){
-        //$event = Calendar::leftjoin('calendar_dates','calendar_dates.calendar_id','calendars.id')->select('calendars.event','calendar_dates.days_num','calendar_dates.days_str')->get();
         $event = Calendar::all();
-        return Response::json($event);
+        $heada = Calendar::take(1)->get();
+        return Response::json(array(
+            'event' => $event,
+            'heada' => $heada,
+        ));
     }
 
     public function addEvent(Request $request) {
+        Calendar::truncate();
+        $period = new DatePeriod(new DateTime($request->date_from), new DateInterval('P1D'), new DateTime($request->date_to.' +1 day'));
+        foreach ($period as $date) {
+            $dates = $date->format("Y-m-d");
+            $day = $date->format("d");
+            $days = $date->format("D");
+            Calendar::create([
+                'date'  => $dates,
+                'days'  => $day,
+                'day' => $days
+            ]);
+        }
+        if($request->checkboxval != ''){
+            Calendar::whereIn('day',$request->checkboxval)->update(['event' =>  $request->event]);
+            Calendar::whereNotIn('day',$request->checkboxval)->update(['event' =>  null]);
+        }
+        else{
+            Calendar::where('id','id')->update(['event' => null]);
+        }
         
-        
-        $event = Calendar::create(
-                                            [
-                                                'event'         => $request->event,
-                                                'date_from'     => $request->date_from,
-                                                'date_to'       => $request->date_to
-                                            ]);
-                 
-        // $period = new DatePeriod(new DateTime($request->date_from), new DateInterval('P1D'), new DateTime($request->date_to.' +1 day'));
-        // foreach ($period as $date) {
-        //     CalendarDates::updateOrCreate([
-        //         'calendar_id'     => $event->id,
-        //         'days_num'        => $date->format("d"),
-        //         'days_str'        => $date->format("D"),
-        //     ]);
-        // }
+        return Response::json("success");
 
-        return Response::json(true);
-       // echo $test2['checkboxval'] = implode(' , ', $request->checkboxval);
     }
 }

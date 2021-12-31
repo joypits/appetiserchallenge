@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\CalendarDates;
+use App\Models\Calendar;
 
 class CalendarSeeder extends Seeder
 {
@@ -16,131 +16,131 @@ class CalendarSeeder extends Seeder
     {
         $dates = array(
             [
-                'days_num'         => 1,
-                'days_str'         => 'Sun'
+                'days'         => 1,
+                'day'         => 'Sun'
             ],
             [
-                'days_num'         => 2,
-                'days_str'         => 'Mon'
+                'days'         => 2,
+                'day'         => 'Mon'
             ],
             [
-                'days_num'         => 3,
-                'days_str'         => 'Tue'
+                'days'         => 3,
+                'day'         => 'Tue'
             ],
             [
-                'days_num'         => 4,
-                'days_str'         => 'Wed'
+                'days'         => 4,
+                'day'         => 'Wed'
             ],
             [
-                'days_num'         => 5,
-                'days_str'         => 'Thu'
+                'days'         => 5,
+                'day'         => 'Thu'
             ],
             [
-                'days_num'         => 6,
-                'days_str'         => 'Fri'
+                'days'         => 6,
+                'day'         => 'Fri'
             ],
             [
-                'days_num'         => 7,
-                'days_str'         => 'Sat'
+                'days'         => 7,
+                'day'         => 'Sat'
             ],
             [
-                'days_num'         => 8,
-                'days_str'         => 'Sun'
+                'days'         => 8,
+                'day'         => 'Sun'
             ],
             [
-                'days_num'         => 9,
-                'days_str'         => 'Mon'
+                'days'         => 9,
+                'day'         => 'Mon'
             ],
             [
-                'days_num'         => 10,
-                'days_str'         => 'Tue'
+                'days'         => 10,
+                'day'         => 'Tue'
             ],
             [
-                'days_num'         => 11,
-                'days_str'         => 'Wed'
+                'days'         => 11,
+                'day'         => 'Wed'
             ],
             [
-                'days_num'         => 12,
-                'days_str'         => 'Thu'
+                'days'         => 12,
+                'day'         => 'Thu'
             ],
             [
-                'days_num'         => 13,
-                'days_str'         => 'Fri'
+                'days'         => 13,
+                'day'         => 'Fri'
             ],
             [
-                'days_num'         => 14,
-                'days_str'         => 'Sat'
+                'days'         => 14,
+                'day'         => 'Sat'
             ],
             [
-                'days_num'         => 15,
-                'days_str'         => 'Sun'
+                'days'         => 15,
+                'day'         => 'Sun'
             ],
             [
-                'days_num'         => 16,
-                'days_str'         => 'Mon'
+                'days'         => 16,
+                'day'         => 'Mon'
             ],
             [
-                'days_num'         => 17,
-                'days_str'         => 'Tue'
+                'days'         => 17,
+                'day'         => 'Tue'
             ],
             [
-                'days_num'         => 18,
-                'days_str'         => 'Wed'
+                'days'         => 18,
+                'day'         => 'Wed'
             ],
             [
-                'days_num'         => 19,
-                'days_str'         => 'Thu'
+                'days'         => 19,
+                'day'         => 'Thu'
             ],
             [
-                'days_num'         => 20,
-                'days_str'         => 'Fri'
+                'days'         => 20,
+                'day'         => 'Fri'
             ],
             [
-                'days_num'         => 21,
-                'days_str'         => 'Sat'
+                'days'         => 21,
+                'day'         => 'Sat'
             ],
             [
-                'days_num'         => 22,
-                'days_str'         => 'Sun'
+                'days'         => 22,
+                'day'         => 'Sun'
             ],
             [
-                'days_num'         => 23,
-                'days_str'         => 'Mon'
+                'days'         => 23,
+                'day'         => 'Mon'
             ],
             [
-                'days_num'         => 24,
-                'days_str'         => 'Tue'
+                'days'         => 24,
+                'day'         => 'Tue'
             ],
             [
-                'days_num'         => 25,
-                'days_str'         => 'Wed'
+                'days'         => 25,
+                'day'         => 'Wed'
             ],
             [
-                'days_num'         => 26,
-                'days_str'         => 'Thu'
+                'days'         => 26,
+                'day'         => 'Thu'
             ],
             [
-                'days_num'         => 27,
-                'days_str'         => 'Fri'
+                'days'         => 27,
+                'day'         => 'Fri'
             ],
             [
-                'days_num'         => 28,
-                'days_str'         => 'Sat'
+                'days'         => 28,
+                'day'         => 'Sat'
             ],
             [
-                'days_num'         => 29,
-                'days_str'         => 'Sun'
+                'days'         => 29,
+                'day'         => 'Sun'
             ],
             [
-                'days_num'         => 30,
-                'days_str'         => 'Mon'
+                'days'         => 30,
+                'day'         => 'Mon'
             ],
             [
-                'days_num'         => 31,
-                'days_str'         => 'Tue'
+                'days'         => 31,
+                'day'         => 'Tue'
             ],
         );
             
-        CalendarDates::insert($dates);
+        Calendar::insert($dates);
     }
 }

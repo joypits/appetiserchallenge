@@ -17,8 +17,5 @@ use App\Http\Controllers\Api\CalendarController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-//Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
     Route::get('/events', [CalendarController::class, 'showEvent']);
-    
 	Route::post('events/add', [CalendarController::class, 'addEvent']);
-//});

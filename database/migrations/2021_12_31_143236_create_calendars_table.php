@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCalendarDatesTable extends Migration
+class CreateCalendarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateCalendarDatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('calendar_dates', function (Blueprint $table) {
+        Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->integer('calendar_id')->nullable();
-            $table->integer('days_num')->nullable();
-            $table->string('days_str')->nullable();
-            $table->timestamps();
+            $table->string('event')->nullable();
+            $table->date('date');
+            $table->integer('days');
+            $table->string('day');
+           $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ class CreateCalendarDatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calendar_dates');
+        Schema::dropIfExists('calendars');
     }
 }

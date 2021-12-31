@@ -10,5 +10,6 @@ class Calendar extends Model
     use HasFactory;
     protected $table = 'calendars';
     protected $guarded = ['id'];
+    
     public $timestamps = true;
 }
