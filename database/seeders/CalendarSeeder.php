@@ -16,127 +16,158 @@ class CalendarSeeder extends Seeder
     {
         $dates = array(
             [
-                'days'         => 1,
+                'date'        => '2018-07-01',
+                'days'        => 1,
                 'day'         => 'Sun'
             ],
             [
-                'days'         => 2,
+                'date'        => '2018-07-02',
+                'days'        => 2,
                 'day'         => 'Mon'
             ],
             [
-                'days'         => 3,
+                'date'        => '2018-07-03',
+                'days'        => 3,
                 'day'         => 'Tue'
             ],
             [
-                'days'         => 4,
+                'date'        => '2018-07-04',
+                'days'        => 4,
                 'day'         => 'Wed'
             ],
             [
-                'days'         => 5,
+                'date'        => '2018-07-05',
+                'days'        => 5,
                 'day'         => 'Thu'
             ],
             [
-                'days'         => 6,
+                'date'        => '2018-07-06',
+                'days'        => 6,
                 'day'         => 'Fri'
             ],
             [
-                'days'         => 7,
+                'date'        => '2018-07-07',
+                'days'        => 7,
                 'day'         => 'Sat'
             ],
             [
-                'days'         => 8,
+                'date'        => '2018-07-08',
+                'days'        => 8,
                 'day'         => 'Sun'
             ],
             [
-                'days'         => 9,
+                'date'        => '2018-07-09',
+                'days'        => 9,
                 'day'         => 'Mon'
             ],
             [
-                'days'         => 10,
+                'date'        => '2018-07-10',
+                'days'        => 10,
                 'day'         => 'Tue'
             ],
             [
-                'days'         => 11,
+                'date'        => '2018-07-11',
+                'days'        => 11,
                 'day'         => 'Wed'
             ],
             [
-                'days'         => 12,
+                'date'        => '2018-07-12',
+                'days'        => 12,
                 'day'         => 'Thu'
             ],
             [
-                'days'         => 13,
+                'date'        => '2018-07-13',
+                'days'        => 13,
                 'day'         => 'Fri'
             ],
             [
-                'days'         => 14,
+                'date'        => '2018-07-14',
+                'days'        => 14,
                 'day'         => 'Sat'
             ],
             [
-                'days'         => 15,
+                'date'        => '2018-07-15',
+                'days'        => 15,
                 'day'         => 'Sun'
             ],
             [
-                'days'         => 16,
+                'date'        => '2018-07-16',
+                'days'        => 16,
                 'day'         => 'Mon'
             ],
             [
-                'days'         => 17,
+                'date'        => '2018-07-17',
+                'days'        => 17,
                 'day'         => 'Tue'
             ],
             [
-                'days'         => 18,
+                'date'        => '2018-07-18',
+                'days'        => 18,
                 'day'         => 'Wed'
             ],
             [
-                'days'         => 19,
+                'date'        => '2018-07-19',
+                'days'        => 19,
                 'day'         => 'Thu'
             ],
             [
-                'days'         => 20,
+                'date'        => '2018-07-20',
+                'days'        => 20,
                 'day'         => 'Fri'
             ],
             [
-                'days'         => 21,
+                'date'        => '2018-07-21',
+                'days'        => 21,
                 'day'         => 'Sat'
             ],
             [
-                'days'         => 22,
+                'date'        => '2018-07-22',
+                'days'        => 22,
                 'day'         => 'Sun'
             ],
             [
-                'days'         => 23,
+                'date'        => '2018-07-23',
+                'days'        => 23,
                 'day'         => 'Mon'
             ],
             [
-                'days'         => 24,
+                'date'        => '2018-07-24',
+                'days'        => 24,
                 'day'         => 'Tue'
             ],
             [
-                'days'         => 25,
+                'date'        => '2018-07-25',
+                'days'        => 25,
                 'day'         => 'Wed'
             ],
             [
-                'days'         => 26,
+                'date'        => '2018-07-26',
+                'days'        => 26,
                 'day'         => 'Thu'
             ],
             [
-                'days'         => 27,
+                'date'        => '2018-07-27',
+                'days'        => 27,
                 'day'         => 'Fri'
             ],
             [
-                'days'         => 28,
+                'date'        => '2018-07-28',
+                'days'        => 28,
                 'day'         => 'Sat'
             ],
             [
-                'days'         => 29,
+                'date'        => '2018-07-29',
+                'days'        => 29,
                 'day'         => 'Sun'
             ],
             [
-                'days'         => 30,
+                'date'        => '2018-07-30',
+                'days'        => 30,
                 'day'         => 'Mon'
             ],
             [
-                'days'         => 31,
+                'date'        => '2018-07-31',
+                'days'        => 31,
                 'day'         => 'Tue'
             ],
         );

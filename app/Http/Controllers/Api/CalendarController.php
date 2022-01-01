@@ -23,25 +23,20 @@ class CalendarController extends Controller
     }
 
     public function addEvent(Request $request) {
-        Calendar::truncate();
         $period = new DatePeriod(new DateTime($request->date_from), new DateInterval('P1D'), new DateTime($request->date_to.' +1 day'));
         foreach ($period as $date) {
             $dates = $date->format("Y-m-d");
             $day = $date->format("d");
             $days = $date->format("D");
-            Calendar::create([
+            Calendar::updateOrCreate([
                 'date'  => $dates,
                 'days'  => $day,
                 'day' => $days
             ]);
         }
-        if($request->checkboxval != ''){
+        if($request->checkboxval != '')
             Calendar::whereIn('day',$request->checkboxval)->update(['event' =>  $request->event]);
-            Calendar::whereNotIn('day',$request->checkboxval)->update(['event' =>  null]);
-        }
-        else{
-            Calendar::where('id','id')->update(['event' => null]);
-        }
+        
         
         return Response::json("success");
 
