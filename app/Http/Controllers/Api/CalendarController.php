@@ -12,13 +12,15 @@ use DateInterval;
 
 class CalendarController extends Controller
 {
-    public function showCalendar(){
-        $event = Calendar::all(); //get all the calendar event record
-        $dateHeader = Calendar::take(1)->get(); //take only 1 record from calendar event
+
+    public function showCalendar($dateFrom,$dateTo){
+        $event = Calendar::whereBetween('date', [$dateFrom,$dateTo])->get(); //get all the calendar event record
+        $dateHeader = Calendar::take(1)->whereBetween('date', [$dateFrom,$dateTo])->get(); //take only 1 record from calendar event    
         return Response::json(array(
             'event'      => $event,
             'dateHeader' => $dateHeader,
         ));
+        
     }
 
     public function addCalendar(Request $request) {
@@ -41,7 +43,6 @@ class CalendarController extends Controller
         else{
             Calendar::whereBetween('date', [$request->date_from,$request->date_to])->update(['event' => null]); // check and update event to null if checkbox value is null on the specific date range
         }
-        
         return Response::json("success");
 
     }

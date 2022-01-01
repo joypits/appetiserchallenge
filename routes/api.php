@@ -18,6 +18,6 @@ use App\Http\Controllers\Api\CalendarController;
 //     return $request->user();
 // });
 
-Route::get('/calendar', [CalendarController::class, 'showCalendar']);
+Route::get('/calendar/{dateFrom}/{dateTo}', [CalendarController::class, 'showCalendar']);
 Route::post('calendar/add', [CalendarController::class, 'addCalendar']);
    

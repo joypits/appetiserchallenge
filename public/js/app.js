@@ -5350,12 +5350,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }, _defineProperty(_name$name$data$metho, "name", "AddCalendar"), _defineProperty(_name$name$data$metho, "data", function data() {
   return {
     categories_list: [],
-    titleH: ''
+    tHeader: '',
+    dateFrom: '2018-07-01',
+    dateTo: '2018-07-31'
   };
 }), _defineProperty(_name$name$data$metho, "methods", {
   ViewCalendar: function ViewCalendar() {
     var instance = this;
-    axios.get('api/calendar').then(function (response) {
+    axios.get('api/calendar/' + this.dateFrom + '/' + this.dateTo).then(function (response) {
       instance.categories_list = response.data.event;
       instance.tHeader = response.data.dateHeader;
     })["catch"](function (error) {
@@ -5375,11 +5377,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         customClass: "alert-success",
         timer: 1000
       });
-      axios.get('api/calendar').then(function (response) {
+      axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' + document.querySelector("input[name=date_to]").value).then(function (response) {
         instance.categories_list = response.data.event;
-        instance.titleH = response.data.heada;
-      })["catch"](function (error) {
-        console.log(error);
+        instance.tHeader = response.data.dateHeader;
       });
     })["catch"](function (error) {
       console.log(error);
@@ -49885,7 +49885,54 @@ var render = function () {
             },
             [
               _c("div", { staticClass: "row" }, [
-                _vm._m(1),
+                _c("div", { staticClass: "col-4" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("From")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "date_from",
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            name: "date_from",
+                            placeholder: "col-md-6",
+                          },
+                        }),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("To")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "date_to",
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            name: "date_to",
+                            placeholder: "col-md-6",
+                          },
+                        }),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                    },
+                    [_vm._v("Save")]
+                  ),
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-8" }, [
                   _c("table", { staticClass: "table" }, [
@@ -49958,159 +50005,127 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Event")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "form-group form-group-feedback form-group-feedback-right",
-          },
-          [
-            _c("input", {
-              staticClass: "form-control form-control-sm",
-              attrs: { type: "text", name: "event" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-control-feedback form-control-feedback-sm" },
-              [_c("i", { staticClass: "icon-stack-down" })]
-            ),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("From")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "date",
-                name: "date_from",
-                placeholder: "col-md-6",
-              },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("To")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "date", name: "date_to", placeholder: "col-md-6" },
-            }),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          staticClass: "custom",
-          attrs: { type: "checkbox", name: "checkboxval[]", value: "Mon" },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "monday" } }, [
-          _vm._v("Mon"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Tue",
-            id: "tuesday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "tuesday" } }, [
-          _vm._v("Tue"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Wed",
-            id: "wednesday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "wednesday" } }, [
-          _vm._v("Wed"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Thu",
-            id: "thursday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "thursday" } }, [
-          _vm._v("Thu"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Fri",
-            id: "friday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "friday" } }, [
-          _vm._v("Fri"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Sat",
-            id: "saturday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "saturday" } }, [
-          _vm._v("Sat"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "custom",
-          attrs: {
-            type: "checkbox",
-            name: "checkboxval[]",
-            value: "Sun",
-            id: "sunday",
-          },
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "chkbox", attrs: { for: "sunday" } }, [
-          _vm._v("Sun"),
-        ]),
-      ]),
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Event")]),
       _vm._v(" "),
       _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
+        "div",
+        {
+          staticClass:
+            "form-group form-group-feedback form-group-feedback-right",
+        },
+        [
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "text", name: "event" },
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-control-feedback form-control-feedback-sm" },
+            [_c("i", { staticClass: "icon-stack-down" })]
+          ),
+        ]
       ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "custom",
+        attrs: { type: "checkbox", name: "checkboxval[]", value: "Mon" },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "monday" } }, [
+        _vm._v("Mon"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Tue",
+          id: "tuesday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "tuesday" } }, [
+        _vm._v("Tue"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Wed",
+          id: "wednesday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "wednesday" } }, [
+        _vm._v("Wed"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Thu",
+          id: "thursday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "thursday" } }, [
+        _vm._v("Thu"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Fri",
+          id: "friday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "friday" } }, [
+        _vm._v("Fri"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Sat",
+          id: "saturday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "saturday" } }, [
+        _vm._v("Sat"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "custom",
+        attrs: {
+          type: "checkbox",
+          name: "checkboxval[]",
+          value: "Sun",
+          id: "sunday",
+        },
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "chkbox", attrs: { for: "sunday" } }, [
+        _vm._v("Sun"),
+      ]),
     ])
   },
 ]

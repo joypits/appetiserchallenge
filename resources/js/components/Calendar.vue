@@ -24,14 +24,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>From</label>
-                                                        <input type="date" name="date_from" class="form-control" placeholder="col-md-6">
+                                                        <input type="date" name="date_from"  ref="date_from" class="form-control" placeholder="col-md-6">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>To</label>
-                                                        <input type="date" name="date_to" class="form-control" placeholder="col-md-6">
+                                                        <input type="date" name="date_to" ref="date_to" class="form-control" placeholder="col-md-6">
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,6 +97,7 @@
     
 </style>
 <script>
+                
      export default {
         name:"ViewCalendar",
         name: "AddCalendar",
@@ -104,22 +105,23 @@
         data () {
             return {
                 categories_list : [],
-                titleH : '',
+                tHeader : '',
+                dateFrom: '2018-07-01',
+                dateTo: '2018-07-31',
             }
         },
  
         methods : {
-            
              ViewCalendar() {
                 let instance = this;
-                axios.get('api/calendar')
+                axios.get('api/calendar/' + this.dateFrom + '/' +  this.dateTo)
                     .then(function (response) {
                         instance.categories_list = response.data.event;
                         instance.tHeader = response.data.dateHeader;
                     })
                     .catch(function (error) {
                         console.log(error);
-                    });
+                    });       
             },
             AddNewCalendar() {
                 var formData = new FormData(document.getElementById("myForm"));
@@ -137,14 +139,11 @@
                                     timer: 1000
                                 });
 
-                        axios.get('api/calendar')
+                        axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' +  document.querySelector("input[name=date_to]").value)
                             .then(function (response) {
                                 instance.categories_list = response.data.event;
-                                instance.titleH = response.data.heada;
+                                instance.tHeader = response.data.dateHeader;
                         
-                            })
-                            .catch(function (error) {
-                                console.log(error);
                             });
                     })
                     .catch(function (error) {
