@@ -31,7 +31,7 @@ Note:
 To change your database configuration like hosts, database name, username and 
 pass please edit it to your .env for your local server configuration.
 
-create database name: appetiser
+create database name: appetiser_challenge
 ```
 
 ### Installing
