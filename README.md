@@ -74,7 +74,3 @@ php artisan migrate:fresh --seed
 
 Note: This will migrate the database schema and the calendar seeder for the default value
 ```
-
-## API Documentation
-Go to this link to show documentation
-http://127.0.0.1:8000/api/documentation
