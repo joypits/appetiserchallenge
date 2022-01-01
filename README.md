@@ -1,4 +1,4 @@
-# Appetiser Coding Challenge
+# Appetiser Calendar Event Coding Challenge
 Coding challenge
 
 Laravel : https://laravel.com/
