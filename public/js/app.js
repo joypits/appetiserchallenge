@@ -5346,27 +5346,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_name$name$data$metho = {
-  name: "ViewEvent"
-}, _defineProperty(_name$name$data$metho, "name", "AddEvent"), _defineProperty(_name$name$data$metho, "data", function data() {
+  name: "ViewCalendar"
+}, _defineProperty(_name$name$data$metho, "name", "AddCalendar"), _defineProperty(_name$name$data$metho, "data", function data() {
   return {
     categories_list: [],
     titleH: ''
   };
 }), _defineProperty(_name$name$data$metho, "methods", {
-  viewEvents: function viewEvents() {
+  ViewCalendar: function ViewCalendar() {
     var instance = this;
-    axios.get('api/events').then(function (response) {
+    axios.get('api/calendar').then(function (response) {
       instance.categories_list = response.data.event;
       instance.titleH = response.data.heada;
     })["catch"](function (error) {
       console.log(error);
     });
   },
-  AddNewEvent: function AddNewEvent() {
+  AddNewCalendar: function AddNewCalendar() {
     var formData = new FormData(document.getElementById("myForm"));
     var instance = this;
-    var self = this;
-    axios.post('api/events/add', formData).then(function (response) {
+    axios.post('api/calendar/add', formData).then(function (response) {
       Swal.fire({
         type: 'success',
         title: 'Event successfully saved',
@@ -5376,7 +5375,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         customClass: "alert-success",
         timer: 1000
       });
-      axios.get('api/events').then(function (response) {
+      axios.get('api/calendar').then(function (response) {
         instance.categories_list = response.data.event;
         instance.titleH = response.data.heada;
       })["catch"](function (error) {
@@ -5387,7 +5386,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     });
   }
 }), _defineProperty(_name$name$data$metho, "mounted", function mounted() {
-  this.viewEvents();
+  this.ViewCalendar();
 }), _name$name$data$metho);
 
 /***/ }),
@@ -49880,7 +49879,7 @@ var render = function () {
               on: {
                 submit: function ($event) {
                   $event.preventDefault()
-                  return _vm.AddNewEvent.apply(null, arguments)
+                  return _vm.AddNewCalendar.apply(null, arguments)
                 },
               },
             },
