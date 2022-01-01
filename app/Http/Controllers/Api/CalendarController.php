@@ -29,20 +29,18 @@ class CalendarController extends Controller
             $dates      = $date->format("Y-m-d");
             $day_number = $date->format("d");
             $day_string = $date->format("D");
-            Calendar::updateOrCreate([
-                'date'        => $dates,
-                'day_number'  => $day_number,
-                'day_string'  => $day_string
-            ]);
+            Calendar::updateOrCreate(
+                [
+                    'day_number'  => $day_number,
+                    'day_string'  => $day_string,
+                    'date'        => $dates
+                    
+                ],
+                [
+                    'event'       => null
+                ]);
         }
-
-        if($request->has('checkboxval')){
-            Calendar::whereIn('day_string',$request->checkboxval)->update(['event' =>  $request->event]); //check and update event if calendar day is present from the checkbox value
-            Calendar::whereNotIn('day_string',$request->checkboxval)->update(['event' =>  null]); // check and update event to null if calendar day is not present from the checkbox value
-        }
-        else{
-            Calendar::whereBetween('date', [$request->date_from,$request->date_to])->update(['event' => null]); // check and update event to null if checkbox value is null on the specific date range
-        }
+        Calendar::whereIn('day_string',$request->checkboxval)->update(['event' =>  $request->event]); //check and update event if calendar day is present from the checkbox value
         return Response::json("success");
 
     }
