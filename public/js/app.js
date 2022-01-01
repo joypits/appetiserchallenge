@@ -5377,12 +5377,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         customClass: "alert-success",
         timer: 1000
       });
-      axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' + document.querySelector("input[name=date_to]").value).then(function (response) {
-        instance.categories_list = response.data.event;
-        instance.tHeader = response.data.dateHeader;
-      });
-    })["catch"](function (error) {
-      console.log(error);
+    });
+    axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' + document.querySelector("input[name=date_to]").value).then(function (response) {
+      instance.categories_list = response.data.event;
+      instance.tHeader = response.data.dateHeader;
     });
   }
 }), _defineProperty(_name$name$data$metho, "mounted", function mounted() {

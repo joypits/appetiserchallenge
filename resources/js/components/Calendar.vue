@@ -128,7 +128,6 @@
                 let instance = this;
                 axios.post('api/calendar/add', formData)
                     .then(function (response) {
-
                          Swal.fire({
                                     type: 'success',
                                     title: 'Event successfully saved',
@@ -138,17 +137,13 @@
                                     customClass: "alert-success",
                                     timer: 1000
                                 });
-
-                        axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' +  document.querySelector("input[name=date_to]").value)
+                    });
+                     axios.get('api/calendar/' + document.querySelector("input[name=date_from]").value + '/' +  document.querySelector("input[name=date_to]").value)
                             .then(function (response) {
                                 instance.categories_list = response.data.event;
                                 instance.tHeader = response.data.dateHeader;
                         
                             });
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
             }
         },
         mounted() {
