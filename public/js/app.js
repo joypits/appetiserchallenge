@@ -5336,6 +5336,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_name$name$data$metho = {
   name: "ViewEvent"
 }, _defineProperty(_name$name$data$metho, "name", "AddEvent"), _defineProperty(_name$name$data$metho, "data", function data() {
@@ -5359,12 +5368,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var self = this;
     axios.post('api/events/add', formData).then(function (response) {
       Swal.fire({
-        icon: 'success',
+        type: 'success',
         title: 'Event successfully saved',
         position: 'top-end',
         showCancelButton: false,
         showConfirmButton: false,
-        timer: 3000
+        customClass: "alert-success",
+        timer: 1000
       });
       axios.get('api/events').then(function (response) {
         instance.categories_list = response.data.event;
@@ -10509,7 +10519,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.default{\n        background-color: #fff;\n}\n.success{\n        background-color: #EAF5EA;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.default{\n     background-color: #fff;\n}\n.success{\n     background-color: #EAF5EA;\n}\n.alert-success {\n     color: #fff;\n     background-color: #229954;\n     border-color: #5ab55e;\n     opacity: 0.6;\n     font-size:10px;\n     font-family: 'Arial Narrow';\n}\n \n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

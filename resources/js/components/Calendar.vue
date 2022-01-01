@@ -80,12 +80,21 @@
 
 </template>
 <style>
-.default{
+    .default{
         background-color: #fff;
     }
     .success{
         background-color: #EAF5EA;
     }
+   .alert-success {
+        color: #fff;
+        background-color: #229954;
+        border-color: #5ab55e;
+        opacity: 0.6;
+        font-size:10px;
+        font-family: 'Arial Narrow';
+    }
+    
 </style>
 <script>
      export default {
@@ -120,12 +129,13 @@
                     .then(function (response) {
 
                          Swal.fire({
-                                    icon: 'success',
+                                    type: 'success',
                                     title: 'Event successfully saved',
                                     position: 'top-end',
                                     showCancelButton: false,
                                     showConfirmButton: false,
-                                    timer: 3000
+                                    customClass: "alert-success",
+                                    timer: 1000
                                 });
 
                         axios.get('api/events')
