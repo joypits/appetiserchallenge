@@ -31,12 +31,17 @@ class CalendarController extends Controller
             Calendar::updateOrCreate([
                 'date'  => $dates,
                 'days'  => $day,
-                'day' => $days
+                'day'   => $days
             ]);
         }
-        if($request->checkboxval != '')
+
+        if($request->has('checkboxval')){
             Calendar::whereIn('day',$request->checkboxval)->update(['event' =>  $request->event]);
-        
+            Calendar::whereNotIn('day',$request->checkboxval)->update(['event' =>  null]);
+        }
+        else{
+            Calendar::whereBetween('date', [$request->date_from,$request->date_to])->update(['event' => null]);
+        }
         
         return Response::json("success");
 
