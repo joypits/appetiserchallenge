@@ -48,6 +48,7 @@ Before running this command make sure your database configuration in .env is cor
 ```
 Run this command
 composer install
+npm install
 
 To generate keys:
 php artisan key:generate
