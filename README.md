@@ -63,15 +63,15 @@ npm run dev
 ```
 
 ```
-Run this command in separate terminal
-php artisan serve
-
-Note: Development server will run at http://127.0.0.1:8000
-```
-
-```
 Run this command
 php artisan migrate:fresh --seed
 
 Note: This will migrate the database schema and the calendar seeder for the default value
+```
+
+```
+Run this command in separate terminal
+php artisan serve
+
+Note: Development server will run at http://127.0.0.1:8000
 ```

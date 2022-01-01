@@ -8,7 +8,7 @@
 							</div>
 
 							<div class="card-body">
-                            <form name="myform" @submit.prevent="AddNewEvent" id="myForm">
+                            <form name="myform" @submit.prevent="AddNewCalendar" id="myForm">
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
@@ -98,8 +98,8 @@
 </style>
 <script>
      export default {
-        name:"ViewEvent",
-        name: "AddEvent",
+        name:"ViewCalendar",
+        name: "AddCalendar",
  
         data () {
             return {
@@ -110,9 +110,9 @@
  
         methods : {
             
-             viewEvents() {
+             ViewCalendar() {
                 let instance = this;
-                axios.get('api/events')
+                axios.get('api/calendar')
                     .then(function (response) {
                         instance.categories_list = response.data.event;
                         instance.titleH = response.data.heada;
@@ -121,11 +121,10 @@
                         console.log(error);
                     });
             },
-            AddNewEvent() {
+            AddNewCalendar() {
                 var formData = new FormData(document.getElementById("myForm"));
                 let instance = this;
-                let self = this;
-                axios.post('api/events/add', formData)
+                axios.post('api/calendar/add', formData)
                     .then(function (response) {
 
                          Swal.fire({
@@ -138,7 +137,7 @@
                                     timer: 1000
                                 });
 
-                        axios.get('api/events')
+                        axios.get('api/calendar')
                             .then(function (response) {
                                 instance.categories_list = response.data.event;
                                 instance.titleH = response.data.heada;
@@ -154,7 +153,7 @@
             }
         },
         mounted() {
-            this.viewEvents();
+            this.ViewCalendar();
         }
                         
     }

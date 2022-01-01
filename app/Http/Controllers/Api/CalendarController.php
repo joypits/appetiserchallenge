@@ -13,7 +13,7 @@ use DateInterval;
 
 class CalendarController extends Controller
 {
-    public function showEvent(){
+    public function showCalendar(){
         $event = Calendar::all(); //get all the calendar event record
         $heada = Calendar::take(1)->get(); //take only 1 record from calendar event
         return Response::json(array(
@@ -22,7 +22,7 @@ class CalendarController extends Controller
         ));
     }
 
-    public function addEvent(Request $request) {
+    public function addCalendar(Request $request) {
         $period = new DatePeriod(new DateTime($request->date_from), new DateInterval('P1D'), new DateTime($request->date_to.' +1 day')); // get the date year, month and day from day 1 to day end of specific date range
         foreach ($period as $date) {
             $dates = $date->format("Y-m-d");
