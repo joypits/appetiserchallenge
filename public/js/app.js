@@ -5357,7 +5357,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var instance = this;
     axios.get('api/calendar').then(function (response) {
       instance.categories_list = response.data.event;
-      instance.titleH = response.data.heada;
+      instance.tHeader = response.data.dateHeader;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -49891,7 +49891,7 @@ var render = function () {
                   _c("table", { staticClass: "table" }, [
                     _c(
                       "thead",
-                      _vm._l(_vm.titleH, function (category, value) {
+                      _vm._l(_vm.tHeader, function (category, value) {
                         return _c("tr", [
                           _c("th", { attrs: { colspan: "2" } }, [
                             _c("h3", [
@@ -49919,9 +49919,9 @@ var render = function () {
                           [
                             _c("td", { attrs: { width: "150px" } }, [
                               _vm._v(
-                                _vm._s(category.days) +
+                                _vm._s(category.day_number) +
                                   " " +
-                                  _vm._s(category.day)
+                                  _vm._s(category.day_string)
                               ),
                             ]),
                             _vm._v(" "),

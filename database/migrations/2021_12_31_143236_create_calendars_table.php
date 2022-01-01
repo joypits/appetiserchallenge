@@ -17,8 +17,8 @@ class CreateCalendarsTable extends Migration
             $table->id();
             $table->string('event')->nullable();
             $table->date('date');
-            $table->integer('days');
-            $table->string('day');
+            $table->integer('day_number');
+            $table->string('day_string');
            $table->timestamps();
         });
     }

@@ -58,13 +58,13 @@
                                         
                                              <table class="table">
                                                 <thead>
-                                                    <tr v-for="(category, value) in titleH">
+                                                    <tr v-for="(category, value) in tHeader">
                                                         <th colspan="2"><h3>{{ category.date | formatDate }}</h3></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr v-bind:class="{success:category.event != null,default:category.event == null}"  v-for="(category,index) in categories_list">
-                                                        <td width="150px">{{ category.days }} {{ category.day }}</td>
+                                                        <td width="150px">{{ category.day_number }} {{ category.day_string }}</td>
                                                         <td align="left">{{ category.event }}</td>
                                                     </tr>
                                                 </tbody>
@@ -115,7 +115,7 @@
                 axios.get('api/calendar')
                     .then(function (response) {
                         instance.categories_list = response.data.event;
-                        instance.titleH = response.data.heada;
+                        instance.tHeader = response.data.dateHeader;
                     })
                     .catch(function (error) {
                         console.log(error);
